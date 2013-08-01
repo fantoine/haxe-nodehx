@@ -1,0 +1,154 @@
+{
+	"modules"	: [
+		{
+			"name"			: "addons",
+			"patch"			: "delete"
+		},
+		{
+			"name"			: "module",
+			"patch"			: "delete"
+		},
+		{
+			"name"			: "assert",
+			"methods"		: [
+				{
+					"name"			: "ok",
+					"patch"			: "signatures",
+					"signatures"	: [
+						{
+							"params": [
+								{
+									"name"		: "value"
+								},
+								{
+									"name"		: "message",
+									"optional"	: true
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name"			: "stream",
+			"classes"		: [
+				{
+					"name"			: "stream.Readable",
+					"patch"			: "rename",
+					"rename"		: "Readable",
+					"methods"		: [
+						{
+							"name"		: "Readable",
+							"patch"		: "rename",
+							"rename"	: "new"
+						},
+						{
+							"name"			: "wrap",
+							"patch"			: "signatures",
+							"signatures"	: [
+								{
+									"params": [
+										{
+											"name"	: "stream",
+											"type"	: "Dynamic"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name"			: "stream.Writable",
+					"patch"			: "rename",
+					"rename"		: "Writable",
+					"methods"		: [
+						{
+							"name"		: "Writable",
+							"patch"		: "rename",
+							"rename"	: "new"
+						}
+					]
+				},
+				{
+					"name"			: "stream.Duplex",
+					"patch"			: "rename",
+					"rename"		: "Duplex"
+				},
+				{
+					"name"			: "stream.Transform",
+					"patch"			: "rename",
+					"rename"		: "Transform"
+				},
+				{
+					"name"			: "stream.PassThrough",
+					"patch"			: "rename",
+					"rename"		: "PassThrough"
+				}
+			]
+		},
+		{
+			"name"			: "tls_(ssl)",
+			"patch"			: "rename",
+			"rename"		: "tls",
+			"classes"		: [
+				{
+					"name"			: "tls.Server",
+					"patch"			: "rename",
+					"rename"		: "Server"
+				},
+				{
+					"name"			: "tls.CleartextStream",
+					"patch"			: "rename",
+					"rename"		: "CleartextStream"
+				}
+			]
+		},
+		{
+			"name"			: "zlib",
+			"classes"		: [
+				{
+					"name"			: "zlib.Zlib",
+					"patch"			: "rename",
+					"rename"		: "Zlib"
+				},
+				{
+					"name"			: "zlib.Gzip",
+					"patch"			: "rename",
+					"rename"		: "Gzip"
+				},
+				{
+					"name"			: "zlib.Gunzip",
+					"patch"			: "rename",
+					"rename"		: "Gunzip"
+				},
+				{
+					"name"			: "zlib.Deflate",
+					"patch"			: "rename",
+					"rename"		: "Deflate"
+				},
+				{
+					"name"			: "zlib.Inflate",
+					"patch"			: "rename",
+					"rename"		: "Inflate"
+				},
+				{
+					"name"			: "zlib.DeflateRaw",
+					"patch"			: "rename",
+					"rename"		: "DeflateRaw"
+				},
+				{
+					"name"			: "zlib.InflateRaw",
+					"patch"			: "rename",
+					"rename"		: "InflateRaw"
+				},
+				{
+					"name"			: "zlib.Unzip",
+					"patch"			: "rename",
+					"rename"		: "Unzip"
+				}
+			]
+		}
+	]
+}
